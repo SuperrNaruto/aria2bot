@@ -26,6 +26,7 @@ API_ID: xxxx
 API_HASH: xxxxxxxx
 BOT_TOKEN: xxxx:xxxxxxxxxxxx
 ADMIN_ID: 管理员ID
+FORWARD_ID: 文件转发目标id
 #默认是否上传到电报 true 或者 false
 UP_TELEGRAM: true
 #aria2c 设置
