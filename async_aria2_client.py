@@ -11,7 +11,7 @@ from typing import List, Dict, Any
 import aiohttp
 import websockets
 
-from configer import ADMIN_ID, UP_TELEGRAM, RPC_URL, RPC_SECRET
+from configer import ADMIN_ID, UP_TELEGRAM, RPC_URL, RPC_SECRET, FORWARD_ID
 from util import get_file_name, imgCoverFromFile, progress, byte2_readable, hum_convert
 
 
@@ -156,7 +156,7 @@ class AsyncAria2Client:
                                                       f'进度: {prog}\n'
                                                       f'大小: {size}\n'
                                                       f'速度: {speed}/s\n'
-                                                      f'时间：{ datetime.now()}',
+                                                      f'时间：{datetime.now()}',
                                                       parse_mode='html')
                     await asyncio.sleep(3)
                 else:
@@ -194,7 +194,6 @@ class AsyncAria2Client:
                             self.progress_cache[gid] = new_progress
                             await self.bot.edit_message(msg, path + f' \n上传中 : {formatted_progress}')
 
-
                     try:
                         # 单独处理mp4上传
                         # 创建带有额外参数部分函数
@@ -213,10 +212,13 @@ class AsyncAria2Client:
                             os.unlink(pat + '/' + filename + '.jpg')
                             os.unlink(path)
                         else:
-                            await self.bot.send_file(ADMIN_ID,
-                                                     path,
-                                                     progress_callback=partial_callback
-                                                     )
+                            temp_msg = await self.bot.send_file(ADMIN_ID,
+                                                                path,
+                                                                progress_callback=partial_callback
+                                                                )
+                            if FORWARD_ID:
+                                await temp_msg.forward_to(int(FORWARD_ID))
+
                             await msg.delete()
                             os.unlink(path)
 
