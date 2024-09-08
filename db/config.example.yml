@@ -1,13 +1,13 @@
-API_ID: xxxx
-API_HASH: xxxxxxxx
-BOT_TOKEN: xxxx:xxxxxxxxxxxx
-ADMIN_ID: 管理员ID
-FORWARD_ID: 转发id
+API_ID: 28191060
+API_HASH: a243c09931c5c7892f889a2805db98d7
+BOT_TOKEN: 7514418631:AAE5oC9v3CpOxOcw7cYbLdH_ZbBuDZ8PaH0
+ADMIN_ID: 5223370270
+FORWARD_ID: 4508608345
 #默认是否上传到电报 true 或者 false
 UP_TELEGRAM: true
 #aria2c 设置
-RPC_SECRET: xxxxxxx
-RPC_URL: xxxxxx:6800/jsonrpc
+RPC_SECRET: 2537204616
+RPC_URL: 129.151.146.15:6800/jsonrpc
 
 #代理ip 不需要留空,目前代理只支持代理bot，aria2c 连接不支持代理目前
 PROXY_IP:
